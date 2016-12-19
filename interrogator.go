@@ -8,23 +8,11 @@ import (
 // Data struct for Ask.
 type Question struct {
 
-	// Define interface for public methods.
-	AInterface
-
 	// Public properties.
 	Content 	string
 	Open 		bool
 	Answers 	map[string][]string
 	Response	string
-}
-
-// Ask interface
-type AInterface interface {
-
-	// Public methods.
-	SetQuestion()
-	IsResponse()
-	SetAnswer()
 }
 
 // Create a new question.
