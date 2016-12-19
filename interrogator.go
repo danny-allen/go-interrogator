@@ -36,7 +36,7 @@ func NewQuestion(content string) *Question {
 }
 
 // Store answers for a question.
-func (q Question) SetAnswer(answer string, values []string) Question {
+func (q *Question) SetAnswer(answer string, values []string) *Question {
 
 	// Set the answers on the question.
 	q.Answers[answer] = values
@@ -46,7 +46,7 @@ func (q Question) SetAnswer(answer string, values []string) Question {
 }
 
 // Ask a question.
-func (q Question) Ask() Question {
+func (q *Question) Ask() *Question {
 
 	// Ask the question.
 	fmt.Println(q.Content)
@@ -91,10 +91,7 @@ func (q Question) Ask() Question {
 }
 
 // Check the response.
-func (q Question) IsResponse(key string) bool {
-
-
-	fmt.Println(q.Response)
+func (q *Question) IsResponse(key string) bool {
 
 	// Check the response matches.
 	if(q.Response == key) {
@@ -102,35 +99,4 @@ func (q Question) IsResponse(key string) bool {
 	} else {
 		return false
 	}
-}
-
-
-// Tests.
-func main() {
-
-	//// Declare question.
-	//q := interrogator.Question{
-	//	Content: "Would you like to upgrade",
-	//}
-	//
-	//// Declare answers.
-	//answers := map[string][]string{}
-	//
-	//// Define answers.
-	//answers["yes"] = []string{"yes", "y"}
-	//answers["no"] = []string{"no", "n"}
-	//
-	//// Ask question.
-	//q = q.Ask(q)
-	//q = q.Answers(q, answers)
-	//
-	//// On yes response.
-	//if(q.Response(q, "yes")) {
-	//	fmt.Println("YES!")
-	//}
-	//
-	//// On no response.
-	//if(q.Response(q, "no")) {
-	//	fmt.Println("Nope!")
-	//}
 }
