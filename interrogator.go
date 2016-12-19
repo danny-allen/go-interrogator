@@ -14,33 +14,39 @@ type Question struct {
 	// Public properties.
 	Content 	string
 	Open 		bool
-
-	// Private properties.
-	response 	string
-	answers		map[string][]string
+	Answers 	map[string][]string
+	Response	string
 }
 
 // Ask interface
 type AInterface interface {
 
 	// Public methods.
-	Question()
-	Response()
-	Answers()
+	SetQuestion()
+	IsResponse()
+	SetAnswer()
+}
+
+// Create a new question.
+func NewQuestion(content string) *Question {
+	q := new(Question)
+	q.Content = content
+	q.Answers = make(map[string][]string)
+	return q
 }
 
 // Store answers for a question.
-func (q Question) Answers(question Question, answers map[string][]string) Question {
+func (q Question) SetAnswer(answer string, values []string) Question {
 
 	// Set the answers on the question.
-	question.answers = answers
+	q.Answers[answer] = values
 
 	// Return the question.
-	return question
+	return q
 }
 
 // Ask a question.
-func (q Question) Ask(question Question) Question {
+func (q Question) Ask() Question {
 
 	// Ask the question.
 	fmt.Println(q.Content)
@@ -57,15 +63,15 @@ func (q Question) Ask(question Question) Question {
 	}
 
 	// If open question, just add the response.
-	if(question.Open) {
+	if(q.Open) {
 
 		// Set the key as response if found.
-		question.response = response
+		q.Response = response
 
 	} else {
 
 		// Loop the answer groups.
-		for key, arr := range question.answers {
+		for key, arr := range q.Answers {
 
 			// Loop each answer.
 			for _, value := range arr {
@@ -74,21 +80,24 @@ func (q Question) Ask(question Question) Question {
 				if (value == response) {
 
 					// Set the key as response if found.
-					question.response = key
+					q.Response = key
 				}
 			}
 		}
 	}
 
 	// Return the question.
-	return question
+	return q
 }
 
 // Check the response.
-func (q Question) Response(question Question, key string) bool {
+func (q Question) IsResponse(key string) bool {
+
+
+	fmt.Println(q.Response)
 
 	// Check the response matches.
-	if(question.response == key) {
+	if(q.Response == key) {
 		return true
 	} else {
 		return false
