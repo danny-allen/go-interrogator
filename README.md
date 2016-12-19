@@ -51,17 +51,17 @@ if(q.IsResponse("no")) {
 You can also create an open question. To do this, you can change the `Open` property on the `Question` struct to true.
 
 ```golang
-    // Create a question.
-    q = interrogator.NewQuestion(
-        "What is your name?",
-    )
+// Create a question.
+q = interrogator.NewQuestion(
+    "What is your name?",
+)
 
-    // Set the question to open.
-    q.Open = true
+// Set the question to open.
+q.Open = true
 
-    // Ask the question.
-    q.Ask()
+// Ask the question.
+q.Ask()
 
-    // Output the response.
-    fmt.Println(q.Response)
+// Output the response.
+fmt.Println(q.Response)
 ```
