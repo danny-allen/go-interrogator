@@ -2,6 +2,8 @@
 
 This package was built to ask questions. You can create two types of questions. Open and Closed.
 
+<br />
+
 ## Installation
 
 Run the following command to install the package:
@@ -9,6 +11,8 @@ Run the following command to install the package:
 ```sh
 go get github.com/danny-allen/go-interrogator
 ```
+
+<br />
 
 ## Examples
 
@@ -39,6 +43,8 @@ if(q.IsResponse("no")) {
     fmt.Println("Okay, but you may be missing out on some cool features!")
 }
 ```
+
+<br />
 
 ### Open Question
 
